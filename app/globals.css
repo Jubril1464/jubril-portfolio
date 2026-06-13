@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0a0907;
+  --color-surface: #100d09;
+  --color-cream: #f3efe6;
+  --color-muted: #b3ad9d;
+  --color-subtle: #8a8475;
+  --color-faint: #6a6557;
+  --color-dim: #9a9486;
+  --color-gold: #e8b04b;
+  --color-gold-light: #f6cf78;
+  --color-gold-dark: #b8822f;
+  --color-gold-mid: #d99f3a;
+  --color-green: #5fd17a;
+
+  --font-space: "Space Grotesk", sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-code: "JetBrains Mono", monospace;
+
+  --animate-grad: jlGrad 18s ease infinite;
+  --animate-float-1: jlFloat 7s ease-in-out infinite;
+  --animate-float-2: jlFloat 8.5s ease-in-out 0.6s infinite;
+  --animate-float-3: jlFloat 9s ease-in-out 1.1s infinite;
+  --animate-float-4: jlFloat 7.6s ease-in-out 0.3s infinite;
+  --animate-marquee: jlMarquee 28s linear infinite;
+  --animate-marquee-r: jlMarqueeR 44s linear infinite;
+  --animate-marquee-test: jlMarquee 44s linear infinite;
+  --animate-marquee-test-r: jlMarqueeR 52s linear infinite;
+  --animate-scroll-dot: jlScrollDot 1.8s ease-in-out infinite;
+  --animate-grid-pan: jlGridPan 8s linear infinite;
+  --animate-dash: jlDash 6s linear infinite;
+  --animate-ring: jlRing 3s ease-out infinite;
+  --animate-orbit-34: jlSpin 34s linear infinite;
+  --animate-orbit-r-50: jlSpinR 50s linear infinite;
+  --animate-orbit-68: jlSpin 68s linear infinite;
+  --animate-counter-34: jlSpinR 34s linear infinite;
+  --animate-counter-50: jlSpin 50s linear infinite;
+  --animate-counter-68: jlSpinR 68s linear infinite;
+}
+
+@keyframes jlGrad {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes jlFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-18px); }
+}
+@keyframes jlSpin  { to { transform: rotate(360deg); } }
+@keyframes jlSpinR { to { transform: rotate(-360deg); } }
+@keyframes jlDash  { to { stroke-dashoffset: -1400; } }
+@keyframes jlMarquee  { to   { transform: translateX(-50%); } }
+@keyframes jlMarqueeR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+@keyframes jlScrollDot {
+  0%   { transform: translateY(-6px); opacity: 0; }
+  30%  { opacity: 1; }
+  100% { transform: translateY(16px); opacity: 0; }
+}
+@keyframes jlGridPan { to { background-position: 48px 48px; } }
+@keyframes jlRing {
+  0%   { transform: scale(0.6); opacity: 0.7; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@keyframes jlShimmer { to { background-position: 200% center; } }
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: #0a0907;
+  color: #f3efe6;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: #e8b04b; color: #0a0907; }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #0a0907; }
+::-webkit-scrollbar-thumb { background: #2a261c; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #3a3424; }
+input, textarea, button { font-family: inherit; }
+
+/* ── Responsive helpers ── */
+@media (max-width: 900px) {
+  .jl-navlinks    { display: none !important; }
+  .jl-about-grid  { grid-template-columns: 1fr !important; gap: 40px !important; }
+  .jl-projects-grid { grid-template-columns: 1fr !important; }
+  .jl-form-row    { grid-template-columns: 1fr !important; }
+  .jl-depth       { display: none !important; }
+  .jl-nav         { gap: 14px !important; padding: 10px 12px 10px 16px !important; }
+}
+@media (max-width: 600px) {
+  .jl-hero      { padding: 100px 18px 60px !important; min-height: 92vh !important; }
+  .jl-stats     { grid-template-columns: repeat(3,1fr) !important; gap: 10px !important; }
+  .jl-stats > div { padding: 14px 10px !important; }
+  .jl-exp-wrap  { padding-left: 38px !important; }
+  .jl-nav       { gap: 10px !important; padding: 8px 10px 8px 14px !important; top: 12px !important; }
+  .jl-hero-cta  { display: none !important; }
+  .jl-hero-cta * { display: none !important; }
+}
+@media (max-width: 499px) {
+  .jl-exp-track { display: none !important; }
+  .jl-exp-dot   { display: none !important; }
+  .jl-exp-wrap {
+    display: flex !important;
+    overflow-x: scroll !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 14px !important;
+    padding: 4px 24px 20px !important;
+    margin: 0 -24px !important;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+    perspective: 600px !important;
+  }
+  .jl-exp-wrap::-webkit-scrollbar { display: none; }
+  .jl-exp-item {
+    flex: 0 0 82vw !important;
+    scroll-snap-align: center !important;
+    margin-bottom: 0 !important;
+    will-change: transform, opacity !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .jl-stats { grid-template-columns: 1fr !important; }
+}
+
+/* ── Orbit chip ── */
+.orbit-chip {
+  padding: 9px 15px;
+  border-radius: 999px;
+  background: rgba(16,14,10,0.8);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(232,176,75,0.18);
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #cdc6b6;
+  white-space: nowrap;
+  cursor: default;
+  transition: border-color 0.3s, color 0.3s, box-shadow 0.3s;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  user-select: none;
+}
+.orbit-chip:hover {
+  border-color: #e8b04b;
+  color: #f6cf78;
+  box-shadow: 0 0 22px rgba(232,176,75,0.4);
+}
+
+/* ── Input focus ── */
+.jl-input:focus {
+  border-color: #e8b04b !important;
+  box-shadow: 0 0 0 3px rgba(232,176,75,0.15);
+  background: rgba(255,255,255,0.05) !important;
+  outline: none;
+}
