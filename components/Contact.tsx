@@ -2,10 +2,9 @@
 import { useEffect, useRef, useState } from "react";
 
 const SOCIALS = [
-  { label: "GitHub", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "Dribbble", href: "#" },
-  { label: "X / Twitter", href: "#" },
+  { label: "GitHub", href: "https://www.github.com/jubril1464" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/jubril-lukman" },
+  { label: "X / Twitter", href: "https://twitter.com/lukmanjubril2" },
 ];
 
 export default function Contact() {
@@ -20,7 +19,13 @@ export default function Contact() {
   const socialsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const els = [labelRef.current, headRef.current, descRef.current, formWrapRef.current, socialsRef.current];
+    const els = [
+      labelRef.current,
+      headRef.current,
+      descRef.current,
+      formWrapRef.current,
+      socialsRef.current,
+    ];
     els.forEach((el) => {
       if (!el) return;
       const io = new IntersectionObserver(
@@ -31,7 +36,7 @@ export default function Contact() {
             io.disconnect();
           }
         },
-        { rootMargin: "0px 0px -12% 0px", threshold: 0.12 }
+        { rootMargin: "0px 0px -12% 0px", threshold: 0.12 },
       );
       io.observe(el);
     });
@@ -83,7 +88,11 @@ export default function Contact() {
   return (
     <section
       id="jl-contact"
-      style={{ position: "relative", padding: "110px 24px 90px", overflow: "hidden" }}
+      style={{
+        position: "relative",
+        padding: "110px 24px 90px",
+        overflow: "hidden",
+      }}
     >
       {/* Animated grid */}
       <div
@@ -95,18 +104,27 @@ export default function Contact() {
           backgroundSize: "48px 48px",
           animation: "var(--animate-grid-pan)",
           maskImage: "radial-gradient(70% 70% at 50% 40%,#000,transparent 80%)",
-          WebkitMaskImage: "radial-gradient(70% 70% at 50% 40%,#000,transparent 80%)",
+          WebkitMaskImage:
+            "radial-gradient(70% 70% at 50% 40%,#000,transparent 80%)",
         }}
       />
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: "radial-gradient(45% 40% at 50% 35%,rgba(232,176,75,0.1),transparent 70%)",
+          background:
+            "radial-gradient(45% 40% at 50% 35%,rgba(232,176,75,0.1),transparent 70%)",
         }}
       />
 
-      <div style={{ position: "relative", maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+      <div
+        style={{
+          position: "relative",
+          maxWidth: 760,
+          margin: "0 auto",
+          textAlign: "center",
+        }}
+      >
         <div ref={labelRef} style={revealBase(0)}>
           <span
             style={{
@@ -172,7 +190,11 @@ export default function Contact() {
           >
             <div
               className="jl-form-row"
-              style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: 16,
+              }}
             >
               <input
                 type="text"
@@ -200,7 +222,9 @@ export default function Contact() {
               required
             />
             {error && (
-              <p style={{ margin: 0, fontSize: 13.5, color: "#f87171" }}>{error}</p>
+              <p style={{ margin: 0, fontSize: 13.5, color: "#f87171" }}>
+                {error}
+              </p>
             )}
             <button
               type="submit"
@@ -223,7 +247,11 @@ export default function Contact() {
                 transition: "transform .25s ease, background .4s, opacity .3s",
               }}
             >
-              {sent ? "Message sent ✓" : loading ? "Sending…" : "Send message →"}
+              {sent
+                ? "Message sent ✓"
+                : loading
+                  ? "Sending…"
+                  : "Send message →"}
             </button>
           </form>
         </div>
@@ -255,11 +283,13 @@ export default function Contact() {
                 transition: "transform .25s ease, border-color .3s, color .3s",
               }}
               onMouseEnter={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(232,176,75,0.4)";
+                (e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(232,176,75,0.4)";
                 (e.currentTarget as HTMLElement).style.color = "#f6cf78";
               }}
               onMouseLeave={(e) => {
-                (e.currentTarget as HTMLElement).style.borderColor = "rgba(243,239,230,0.12)";
+                (e.currentTarget as HTMLElement).style.borderColor =
+                  "rgba(243,239,230,0.12)";
                 (e.currentTarget as HTMLElement).style.color = "#cdc6b6";
               }}
             >
